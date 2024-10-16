@@ -1,0 +1,49 @@
+Key Components of the Program
+
+    Imports: You correctly import necessary data from various files, such as:
+        landmark_choices from landmark_choices.py
+        vc_metro from vc_metro.py
+        vc_landmarks from vc_landmarks.py
+        bfs and dfs from graph_search.py
+
+    These imports are essential for accessing the metro graph and performing graph searches like BFS and DFS.
+
+    Main Program Flow:
+
+        Landmark Selection: You allow users to select their start and end points based on Vancouver landmarks using the landmark_choices dictionary. The function set_start_and_end() lets users specify the origin and destination landmarks, and get_start() and get_end() ensure valid inputs.
+
+        Route Calculation: The get_route() function uses the BFS algorithm to find the shortest route between the metro stations closest to the start and end landmarks. Multiple stations are handled (since some landmarks may have more than one associated metro station), and the shortest path is determined.
+
+        Handling Construction: The program includes functionality to handle stations under construction using stations_under_construction. The get_active_stations() function creates a modified metro graph, preventing routes through closed stations. This ensures the tool continues to function dynamically based on real-time construction updates.
+
+        User Interactivity: The program is interactive, asking users if they want to find another route or see the list of landmarks again using the new_route() and show_landmarks() functions. The loop ensures users can search for multiple routes without restarting the program.
+
+    Graph Search: The BFS (Breadth-First Search) function is essential for finding the shortest path between metro stations. The DFS (Depth-First Search) function is used to check if any route exists between the start and end stations when construction is involved.
+
+    User-Friendly Output: The shortest route is presented to users in a readable format, with metro stations listed on separate lines, making it easy for them to follow the suggested route.
+
+    Additional Features:
+        If there are stations under construction, users will be notified that no route is available between the chosen landmarks.
+        You’ve planned to handle edge cases, such as users selecting the same station for both the origin and destination.
+
+Testing the Program
+
+To make sure the program is fully functional, you can test it by doing the following:
+
+    Run the Program: Open a terminal and run the program by typing:
+
+    bash
+
+    python3 skyroute.py
+
+    Test Different Inputs:
+        Enter various valid and invalid inputs to ensure the program correctly handles errors (e.g., entering an invalid landmark letter).
+        Test edge cases, such as choosing the same landmark for both the start and end points.
+
+    Test with Stations Under Construction: Add stations to the stations_under_construction list and verify that routes are correctly recalculated, bypassing those stations.
+
+Example Test Cases
+
+    Case 1: From Stanley Park to Granville Island (ensure this is a valid route).
+    Case 2: Add a station under construction that would normally be part of the shortest route and verify that the program finds an alternative route (or none at all if necessary).
+    Case 3: Try selecting the same landmark for start and end to verify how the program responds.
